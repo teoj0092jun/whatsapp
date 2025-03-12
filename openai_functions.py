@@ -9,9 +9,7 @@ client = OpenAI(
 
 def ask_openai_assistant(query: str, recipient_id: str) -> str:
     try:
-        # Ensure thread ID remains the same even after run is restarted, keeping any user interaction
-        thread_id = "thread_BXxGmRfAejMA1YBrN1agBmGT"
-        ##thread_id = get_thread_id_from_recipient_id(recipient_id=recipient_id)
+        thread_id = get_thread_id_from_recipient_id(recipient_id=recipient_id)
         if thread_id:
             print("Thread ID Found")
             thread = client.beta.threads.retrieve(thread_id=thread_id)
